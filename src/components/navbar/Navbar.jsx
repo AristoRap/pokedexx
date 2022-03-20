@@ -17,7 +17,7 @@ export function Navbar() {
         </li>
         <li>
           <NavLink to="/search">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </NavLink>
         </li>
         <li></li>

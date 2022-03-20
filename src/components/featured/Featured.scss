@@ -1,0 +1,16 @@
+.featured {
+  margin-top: 2rem;
+
+  .swiper-button {
+    &-next,
+    &-prev {
+      transform: scale(0.9);
+      color: rgba(251, 27, 27, 0.8);
+      transition: all 0.3s ease-out;
+      &:hover {
+        transform: scale(1.1);
+        transition: all 0.3s ease-out;
+      }
+    }
+  }
+}
