@@ -1,9 +1,11 @@
 import React from 'react'
+import './Search.scss'
 
 export function Search() {
   return (
-    <div>
-
+    <div className="search-form">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search" className="search-input" />
     </div>
   );
 }

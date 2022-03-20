@@ -1,0 +1,22 @@
+.search {
+  &-form {
+    padding: 0 1rem;
+    border-radius: 1rem;
+    background-color: rgba(90, 90, 90, 0.1);
+    width: 35%;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  &-input {
+    padding: 0.5rem;
+    padding-left: 1rem;
+    border: none;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}

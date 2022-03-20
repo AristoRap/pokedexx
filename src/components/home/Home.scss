@@ -6,6 +6,20 @@
   padding: 2rem;
 }
 
+.button-primary {
+  background-color: rgba(251, 27, 27, 0.8);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease-out;
+  position: relative;
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(251, 27, 27, 0.8);
+  }
+}
+
 .featured {
   width: 100%;
   background-color: rgba(90, 90, 90, 0.1);
@@ -14,7 +28,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
   &-meta {
     max-width: 50%;
@@ -29,6 +43,22 @@
   &-image {
     position: absolute;
     right: 1rem;
-    bottom: -5rem;
+    bottom: -2rem;
   }
+  &-types {
+    margin-bottom: 2rem;
+  }
+  &-type {
+    color:rgba(255, 255, 255, 0.8);
+    padding: 0.3rem 0.6rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.psychic {
+  background-color: #855AC9;
+}
+.flying {
+  background-color:  #5EBDFC;
 }
