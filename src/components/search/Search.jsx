@@ -1,11 +1,12 @@
-import React from 'react'
+import { SearchForm } from "../search-form/SearchForm";
 import './Search.scss'
+
+import React from "react";
 
 export function Search() {
   return (
-    <div className="search-form">
-      <i className="fas fa-search"></i>
-      <input type="text" placeholder="Search" className="search-input" />
+    <div className="container search-wrap">
+      <SearchForm />
     </div>
   );
 }
