@@ -11,6 +11,7 @@ import "./Featured.scss";
 export function Featured() {
   const [sample, setSample] = useState([]);
   const [featured, setFeatured] = useState([]);
+  const [description, setDescription] = useState([]);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * 700);
@@ -18,7 +19,7 @@ export function Featured() {
     axios
       .get(url)
       .then((response) => {
-          setSample(response.data.results);
+        setSample(response.data.results);
       })
       .catch((err) => {
         const mute = err;
@@ -30,17 +31,28 @@ export function Featured() {
       axios
         .get(pokemon.url)
         .then((response) => {
-          setFeatured((prev) => [
-            ...prev,
-            response.data,
-          ]);
+          setFeatured((prev) => [...prev, response.data]);
+          axios
+            .get(response.data.species.url)
+            .then((response) => {
+              setDescription((prev) => [...prev, response.data]);
+            })
+            .catch((err) => {
+              const mute = err;
+            });
         })
         .catch((err) => {
           const mute = err;
         });
-    })
+    });
   }, [sample]);
 
+  // useEffect(() => {
+  //   featured.forEach((pokemon) => {
+  //   });
+  // }, [featured]);
+
+  console.log(description);
   return (
     <div className="featured">
       <Swiper
@@ -62,14 +74,17 @@ export function Featured() {
                   {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
                 </h1>
                 <p>
-                  Lugia's wings pack devastating power - a light fluttering of
-                  its wings can blow apart regular houses. As a result, this
-                  POKéMON chooses to live out of sight deep under the sea.
+                  {description[i] &&
+                    description[i].flavor_text_entries.find(
+                      (entry) => entry.language.name === "en"
+                    ).flavor_text}
                 </p>
                 <div className="featured-types">
                   <ul className="list-inline d-flex">
                     {pokemon.types.map((p, i) => (
-                      <li className={`featured-type ${p.type.name}`} key={i}>{p.type.name}</li>
+                      <li className={`featured-type ${p.type.name}`} key={i}>
+                        {p.type.name}
+                      </li>
                     ))}
                   </ul>
                 </div>
