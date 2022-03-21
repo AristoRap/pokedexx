@@ -3,11 +3,11 @@ import pokemon from "../../assets/images/lugia.png";
 import suicune from "../../assets/images/suicune.png";
 import zekrom from "../../assets/images/zekrom.png";
 import './Featured.scss'
+import { NavLink } from "react-router-dom";
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -28,6 +28,7 @@ export function Featured() {
       >
         <SwiperSlide>
           <div className="featured-item">
+            <img className="featured-image" src={pokemon} alt="Lugia" />
             <div className="featured-meta">
               <h1>Lugia</h1>
               <p>
@@ -41,15 +42,15 @@ export function Featured() {
                   <li className="featured-type flying">flying</li>
                 </ul>
               </div>
-              <a href="/" className="button-primary">
+              <NavLink to="/search" className="button-primary">
                 Learn more
-              </a>
+              </NavLink>
             </div>
-            <img className="featured-image" src={pokemon} alt="Lugia" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="featured-item">
+            <img className="featured-image" src={suicune} alt="Suicune" />
             <div className="featured-meta">
               <h1>Suicune</h1>
               <p>
@@ -62,15 +63,15 @@ export function Featured() {
                   <li className="featured-type water">water</li>
                 </ul>
               </div>
-              <a href="/" className="button-primary">
+              <NavLink to="/search" className="button-primary">
                 Learn more
-              </a>
+              </NavLink>
             </div>
-            <img className="featured-image" src={suicune} alt="Suicune" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="featured-item">
+            <img className="featured-image" src={zekrom} alt="Zekrom" />
             <div className="featured-meta">
               <h1>Zekrom</h1>
               <p>
@@ -83,11 +84,10 @@ export function Featured() {
                   <li className="featured-type electric">electric</li>
                 </ul>
               </div>
-              <a href="/" className="button-primary">
+              <NavLink to="/search" className="button-primary">
                 Learn more
-              </a>
+              </NavLink>
             </div>
-            <img className="featured-image" src={zekrom} alt="Zekrom" />
           </div>
         </SwiperSlide>
       </Swiper>

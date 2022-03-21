@@ -1,15 +1,32 @@
-
 .navigation {
-  .pokeball {
-    width: 4rem;
-  }
+  position: fixed;
+  bottom: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-right: 2px solid rgba(255, 255, 255, 0.1);
-  font-size: 2rem;
-  height: 100vh;
-  li, a {
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: 2;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  font-size: 1.5rem;
+  @media (min-width: 40rem) {
+    width: auto;
+    border: none;
+    flex-direction: column;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    align-items: center;
+    height: 100vh;
+    font-size: 2rem;
+  }
+  .pokeball {
+    display: none;
+    @media (min-width: 40rem) {
+      display: inline-block;
+      width: 4rem;
+    }
+  }
+
+  li,
+  a {
     padding: 1rem;
     color: rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease-out;
@@ -20,11 +37,18 @@
     color: white;
     transition: all 0.3s ease-out;
   }
+
   &-list {
-    height: 100%;
     display: flex;
-    flex-direction: column;
+    width: 100vw;
+    padding-top: 1rem;
     justify-content: center;
-    padding-bottom: 10rem;
+    @media (min-width: 40rem) {
+      flex-direction: column;
+      width: auto;
+      height: 100%;
+      padding: 0;
+      padding-bottom: 10rem;
+    }
   }
 }

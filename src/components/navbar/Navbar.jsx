@@ -6,9 +6,7 @@ import "./Navbar.scss";
 export function Navbar() {
   return (
     <div className="navigation">
-      <NavLink to="/">
-        <img className="pokeball" src={pokeball} alt="Pokeball." />
-      </NavLink>
+      <img className="pokeball" src={pokeball} alt="Pokeball." />
       <ul className="list-inline navigation-list">
         <li>
           <NavLink to="/">
@@ -20,8 +18,6 @@ export function Navbar() {
             <i className="fas fa-search"></i>
           </NavLink>
         </li>
-        <li></li>
-        <li></li>
       </ul>
     </div>
   );
