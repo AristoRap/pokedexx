@@ -1,5 +1,7 @@
 import React from 'react'
 import pokemon from "../../assets/images/lugia.png";
+import suicune from "../../assets/images/suicune.png";
+import zekrom from "../../assets/images/zekrom.png";
 import './Featured.scss'
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -49,23 +51,43 @@ export function Featured() {
         <SwiperSlide>
           <div className="featured-item">
             <div className="featured-meta">
-              <h1>Lugia</h1>
+              <h1>Suicune</h1>
               <p>
-                Lugia's wings pack devastating power - a light fluttering of its
-                wings can blow apart regular houses. As a result, this POKéMON
-                chooses to live out of sight deep under the sea.
+                Suicune embodies the compassion of a pure spring of water. It
+                runs across the land with gracefulness. This POKéMON has the
+                power to purify dirty water.
               </p>
               <div className="featured-types">
                 <ul className="list-inline d-flex">
-                  <li className="featured-type psychic">psychic</li>
-                  <li className="featured-type flying">flying</li>
+                  <li className="featured-type water">water</li>
                 </ul>
               </div>
               <a href="/" className="button-primary">
                 Learn more
               </a>
             </div>
-            <img className="featured-image" src={pokemon} alt="Lugia" />
+            <img className="featured-image" src={suicune} alt="Suicune" />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="featured-item">
+            <div className="featured-meta">
+              <h1>Zekrom</h1>
+              <p>
+                Concealing itself in lightning clouds, it flies throughout the
+                Unova region. It creates electricity in its tail.
+              </p>
+              <div className="featured-types">
+                <ul className="list-inline d-flex">
+                  <li className="featured-type dragon">dragon</li>
+                  <li className="featured-type electric">electric</li>
+                </ul>
+              </div>
+              <a href="/" className="button-primary">
+                Learn more
+              </a>
+            </div>
+            <img className="featured-image" src={zekrom} alt="Zekrom" />
           </div>
         </SwiperSlide>
       </Swiper>

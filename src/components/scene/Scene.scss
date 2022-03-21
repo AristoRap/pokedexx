@@ -1,0 +1,58 @@
+.top {
+  opacity: 0;
+  animation: hide 2s ease-out;
+  z-index: 10;
+  width: 100vw;
+  height: 50vh;
+  position: absolute;
+  background-color: red;
+  overflow: hidden;
+  top: 0;
+  &::before {
+    border: 2rem solid black;
+    content: "";
+    inset: 0;
+    width: 15rem;
+    height: 15rem;
+    left: 40%;
+    top: 385px;
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+  }
+}
+
+@keyframes hide {
+  from {
+    display: block;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    display: none;
+  }
+}
+
+.bottom {
+  opacity: 0;
+  animation: hide 2s ease-out;
+  z-index: 0;
+  width: 100vw;
+  height: 50vh;
+  position: absolute;
+  background-color: white;
+  overflow: hidden;
+  bottom: 0;
+  &::before {
+    border: 2rem solid black;
+    content: "";
+    inset: 0;
+    width: 15rem;
+    height: 15rem;
+    left: 40%;
+    top: -110px;
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+  }
+}
