@@ -1,3 +1,9 @@
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/scrollbar';
+
+
 .featured {
   .swiper-pagination-bullet-active {
     background-color: rgba(251, 27, 27, 0.8);
@@ -57,8 +63,10 @@
     }
   }
   &-image {
-    width: 250px;
-
+    width: 150px;
+    height: 200px;
+    margin-top: 2rem;
+    // transform: scale(0.1);
     @media (min-width: 40rem) {
       right: 1rem;
       bottom: -2.5rem;
@@ -85,13 +93,53 @@
   background-color: #855AC9;
 }
 .flying {
+  background-color:  #EFFFFD;
+}
+.ice {
   background-color:  #5EBDFC;
+}
+.fighting {
+  background-color:  rgba(251, 27, 27, 0.5);
+}
+.steel {
+  background-color:  #B8B8D0;
+  color: black;
 }
 .water {
   background-color:  #1C4CBD;
 }
+.poison {
+  background-color:  #9C3E9C;
+}
 .dragon {
   background-color:  tomato;
+}
+.grass {
+  background-color:  hsl(129, 38%, 29%);
+}
+.ground {
+  background-color:  #DAB88B;
+  color: black;
+}
+.dark {
+  background-color:  #705848;
+}
+.fairy {
+  background-color:  #F473B9;
+}
+.bug {
+  background-color:  hsl(66, 67%, 35%);
+}
+.fire {
+  background-color:  #630606;
+}
+.rock {
+  background-color:  #CEAB93;
+  color: black;
+}
+.normal {
+  background-color:  #E6D5B8;
+  color: black;
 }
 .electric {
   background-color:  #FFCC00;

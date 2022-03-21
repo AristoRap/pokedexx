@@ -1,21 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import { Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import pokemon from "../../assets/images/lugia.png";
 import suicune from "../../assets/images/suicune.png";
 import zekrom from "../../assets/images/zekrom.png";
-import './Featured.scss'
-import { NavLink } from "react-router-dom";
-// import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-
+import "./Featured.scss";
 
 export function Featured() {
+  const [sample, setSample] = useState([]);
+  const [featured, setFeatured] = useState([]);
+
+  useEffect(() => {
+    const random = Math.floor(Math.random() * 700);
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=8&offset=${random}`;
+    axios
+      .get(url)
+      .then((response) => {
+          setSample(response.data.results);
+      })
+      .catch((err) => {
+        const mute = err;
+      });
+  }, []);
+
+  useEffect(() => {
+    sample.forEach((pokemon) => {
+      axios
+        .get(pokemon.url)
+        .then((response) => {
+          setFeatured((prev) => [
+            ...prev,
+            response.data,
+          ]);
+        })
+        .catch((err) => {
+          const mute = err;
+        });
+    })
+  }, [sample]);
+
   return (
     <div className="featured">
       <Swiper
@@ -23,73 +48,38 @@ export function Featured() {
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
       >
-        <SwiperSlide>
-          <div className="featured-item">
-            <img className="featured-image" src={pokemon} alt="Lugia" />
-            <div className="featured-meta">
-              <h1>Lugia</h1>
-              <p>
-                Lugia's wings pack devastating power - a light fluttering of its
-                wings can blow apart regular houses. As a result, this POKéMON
-                chooses to live out of sight deep under the sea.
-              </p>
-              <div className="featured-types">
-                <ul className="list-inline d-flex">
-                  <li className="featured-type psychic">psychic</li>
-                  <li className="featured-type flying">flying</li>
-                </ul>
+        {featured.map((pokemon, i) => (
+          <SwiperSlide key={i}>
+            <div className="featured-item">
+              <img
+                className="featured-image"
+                src={pokemon.sprites.other.dream_world.front_default}
+                alt={pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
+              />
+              <div className="featured-meta">
+                <h1>
+                  {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
+                </h1>
+                <p>
+                  Lugia's wings pack devastating power - a light fluttering of
+                  its wings can blow apart regular houses. As a result, this
+                  POKéMON chooses to live out of sight deep under the sea.
+                </p>
+                <div className="featured-types">
+                  <ul className="list-inline d-flex">
+                    {pokemon.types.map((p, i) => (
+                      <li className={`featured-type ${p.type.name}`} key={i}>{p.type.name}</li>
+                    ))}
+                  </ul>
+                </div>
+                <NavLink to="/search" className="button-primary">
+                  Learn more
+                </NavLink>
               </div>
-              <NavLink to="/search" className="button-primary">
-                Learn more
-              </NavLink>
             </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="featured-item">
-            <img className="featured-image" src={suicune} alt="Suicune" />
-            <div className="featured-meta">
-              <h1>Suicune</h1>
-              <p>
-                Suicune embodies the compassion of a pure spring of water. It
-                runs across the land with gracefulness. This POKéMON has the
-                power to purify dirty water.
-              </p>
-              <div className="featured-types">
-                <ul className="list-inline d-flex">
-                  <li className="featured-type water">water</li>
-                </ul>
-              </div>
-              <NavLink to="/search" className="button-primary">
-                Learn more
-              </NavLink>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="featured-item">
-            <img className="featured-image" src={zekrom} alt="Zekrom" />
-            <div className="featured-meta">
-              <h1>Zekrom</h1>
-              <p>
-                Concealing itself in lightning clouds, it flies throughout the
-                Unova region. It creates electricity in its tail.
-              </p>
-              <div className="featured-types">
-                <ul className="list-inline d-flex">
-                  <li className="featured-type dragon">dragon</li>
-                  <li className="featured-type electric">electric</li>
-                </ul>
-              </div>
-              <NavLink to="/search" className="button-primary">
-                Learn more
-              </NavLink>
-            </div>
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
