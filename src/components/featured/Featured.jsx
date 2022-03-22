@@ -3,9 +3,6 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import pokemon from "../../assets/images/lugia.png";
-import suicune from "../../assets/images/suicune.png";
-import zekrom from "../../assets/images/zekrom.png";
 import "./Featured.scss";
 
 export function Featured() {
@@ -47,12 +44,6 @@ export function Featured() {
     });
   }, [sample]);
 
-  // useEffect(() => {
-  //   featured.forEach((pokemon) => {
-  //   });
-  // }, [featured]);
-
-  console.log(description);
   return (
     <div className="featured">
       <Swiper
